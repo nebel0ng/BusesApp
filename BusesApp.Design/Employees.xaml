@@ -1,0 +1,44 @@
+﻿<Window x:Class="BusesApp.Design.Employees"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BusesApp.Design"
+        mc:Ignorable="d"
+        Title="Employees" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="200"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Grid.Column="0" Margin="10,56,10,55">
+            <StackPanel Margin="0, 0, 0, 10" VerticalAlignment="Center" Height="30" Orientation="Horizontal" Grid.Column="0">
+                <Label Width="100" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Content="ФИО"/>
+                <TextBox Width="250" HorizontalContentAlignment="Left" x:Name="NameBox" TextWrapping="Wrap" Text="TextBox"/>
+            </StackPanel>
+            <StackPanel  Margin="0, 0, 0, 10" VerticalAlignment="Center" Height="30" Orientation="Horizontal" Grid.Column="0">
+                <Label Width="100" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Content="Должность"/>
+                <ComboBox  Width="250" Name="Types" HorizontalContentAlignment="Left"/>
+            </StackPanel>
+
+        </StackPanel>
+        <Button Grid.Row="0" Grid.Column="1" Content="Добавить должность" VerticalContentAlignment="Center" HorizontalAlignment="Left"  Width="190" Height="40" Margin="200,80,0,80"  Click="Button_Click_AddType" Cursor="Hand"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1" Margin="10" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+            <Button Content="Добавить" VerticalContentAlignment="Center"  Width="120" Height="40" Margin="0,0,10,0"  Click="Button_Click_Add"/>
+            <Button Content="Удалить"  VerticalContentAlignment="Center" Width="120" Height="40" Margin="0,0,10,0" Click="Button_Click_Delete" IsEnabled="{Binding ElementName=EmpTable, Path=SelectedItems.Count}"/>
+            <Button Content="Изменить"  VerticalContentAlignment="Center" Width="120" Height="40" Margin="0,0,10,0" Click="Button_Click_Edit" IsEnabled="{Binding ElementName=EmpTable, Path=SelectedItems.Count}" Cursor="Hand"/>
+            <Button Content="Сохранить" VerticalContentAlignment="Center"  Width="120" Height="40" Click="Button_Click_SaveChanges"/>
+        </StackPanel>
+        <DataGrid AutoGenerateColumns="False" Margin="10" Grid.Row="1" Grid.ColumnSpan="2" Name="EmpTable" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" d:ItemsSource="{d:SampleData ItemCount=20}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding Path=Id, Mode=OneWay}"/>
+                <DataGridTextColumn Header="ФИО" Binding="{Binding Path=Name, Mode=OneWay}"/>
+                <DataGridTextColumn Header="Должность" Binding="{Binding Path=Type, Mode=OneWay}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

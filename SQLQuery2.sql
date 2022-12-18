@@ -1,0 +1,13 @@
+﻿INSERT INTO Countries(Name) VALUES ('Египет');
+INSERT INTO Countries(Name) VALUES ('Израиль');
+INSERT INTO Countries(Name) VALUES ('Испания');
+INSERT INTO Countries(Name) VALUES ('Италия');
+INSERT INTO Countries(Name) VALUES ('Казахстан');
+INSERT INTO Countries(Name) VALUES ('Киргизия');
+INSERT INTO Countries(Name) VALUES ('Россия');
+INSERT INTO Countries(Name) VALUES ('Таджикистан');
+INSERT INTO Countries(Name) VALUES ('Туркменистан');
+INSERT INTO Countries(Name) VALUES ('Турция');
+INSERT INTO Countries(Name) VALUES ('Узбекистан');
+INSERT INTO Countries(Name) VALUES ('Украина');
+INSERT INTO Countries(Name) VALUES ('Черногория');

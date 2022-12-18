@@ -1,0 +1,50 @@
+﻿<Window x:Class="BusesApp.Design.LocRoutes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BusesApp.Design"
+        mc:Ignorable="d"
+        Title="LocRoutes" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="200"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Grid.Column="0" Margin="10">
+
+            <StackPanel  Margin="0, 0, 0, 10" VerticalAlignment="Center" Height="30" Orientation="Horizontal" Grid.Column="0">
+                <Label Width="100" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Content="Сотрудник"/>
+                <ComboBox  Width="250" Name="Employees" HorizontalContentAlignment="Left"/>
+            </StackPanel>
+
+            <StackPanel  Margin="0, 0, 0, 10" VerticalAlignment="Center" Height="30" Orientation="Horizontal" Grid.Column="0">
+                <Label Width="100" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Content="Направление"/>
+                <ComboBox  Width="250" Name="Routes" HorizontalContentAlignment="Left"/>
+            </StackPanel>
+            <StackPanel  Margin="0, 0, 0, 10" VerticalAlignment="Center" Height="30" Orientation="Horizontal" Grid.Column="0">
+                <Label Width="100" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Content="Отправление"/>
+                <ComboBox  Width="250" Name="Dates" HorizontalContentAlignment="Left"/>
+            </StackPanel>
+
+        </StackPanel>
+        <DataGrid AutoGenerateColumns="False" Margin="10" Grid.Row="1" Grid.ColumnSpan="2" Name="ETTable" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" d:ItemsSource="{d:SampleData ItemCount=20}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding Path=Id, Mode=OneWay}"/>
+                <DataGridTextColumn Header="Сотрудник" Binding="{Binding Path=Employee, Mode=OneWay}"/>
+                <DataGridTextColumn Header="Маршрут" Binding="{Binding Path=Route, Mode=OneWay}"/>
+                <DataGridTextColumn Header="Отправление" Binding="{Binding Path=SD, Mode=OneWay}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1" Margin="10" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+            <Button Content="Добавить" VerticalContentAlignment="Center"  Width="120" Height="40" Margin="0,0,10,0"  Click="Button_Click_Add"/>
+            <Button Content="Удалить"  VerticalContentAlignment="Center" Width="120" Height="40" Margin="0,0,10,0" Click="Button_Click_Delete" IsEnabled="{Binding SelectedItems.Count, ElementName=ETTable}"/>
+            <!--<Button Content="Изменить"  VerticalContentAlignment="Center" Width="120" Height="40" Margin="0,0,10,0" Click="Button_Click_Edit" IsEnabled="{Binding SelectedItems.Count, ElementName=ETTable}" Cursor="Hand"/>-->
+            <!--<Button Content="Сохранить" VerticalContentAlignment="Center"  Width="120" Height="40" Click="Button_Click_SaveChanges"/>-->
+        </StackPanel>
+    </Grid>
+</Window>
